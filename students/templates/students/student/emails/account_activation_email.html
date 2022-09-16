@@ -1,0 +1,11 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Please click on the link below to confirm your registration:
+
+{{ scheme }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
+If you have any questions, please email: mvhsforum@gmail.com
+
+Thank you,
+MVHS SBS Team

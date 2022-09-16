@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}My topics{% endblock %}
+
+{% block content %}
+  <h1>My Topics</h1>
+
+  <div class="main_frame">
+    {% for course in object_list %}
+      <div class="course-info">
+        <h3>{{ course.title }}</h3>
+        <p><a href="{% url "chat:course_qa_room" course.id %}">
+        QA Room</a></p>
+      </div>
+    {% empty %}
+      <p>
+        You have not added any topics yet.
+        <a href="{% url "subject_list" %}">Browse topics</a>
+        to add a topic.
+      </p>
+    {% endfor %}
+  </div>
+{% endblock %}

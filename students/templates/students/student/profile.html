@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load course %}
+
+{% block title %}Your Profile{% endblock title %}
+
+{% block content %} 
+    <h1>Your Profile</h1>
+    <div class="module" id="Profile_settings">
+        <p><em style="color: darkblue;font-weight: bold;font-style: normal;">Username:</em> {{ request.user.get_username }}
+            {% if request.user|has_group:"Tutor" %}
+            <span style="color: cornflowerblue;font-style: normal;"> (You are a tutor) </span>
+            {% endif %}
+        </p>
+        <p><em style="color: darkblue;font-weight: bold;font-style: normal;">Email:</em> {{ request.user.email }}</p>
+        <p><a href="{% url 'settings' %}">Settings</a></p> 
+        <p><a href="{% url 'change_password' %}">Change Password</a></p>
+        <br><br>
+        <a href="{% url 'home' %}">Back</a>
+    </div>
+{% endblock content %}

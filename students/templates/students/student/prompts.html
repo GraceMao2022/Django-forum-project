@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1> {{ title }} </h1>
+  <div class="module" style="width: 600px;">
+    <p>{{ message }}</p>
+    <br>
+    <a href="{% url "login" %}"> Go to login page</a>
+  </div>
+{% endblock %}

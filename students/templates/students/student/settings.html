@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock title %}
+
+{% block content %} 
+    <h1>Settings</h1>
+    <div class="module">
+        <form method = "POST">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type = "submit" value = "Submit">
+        </form>
+        
+        <p><a href="{% url 'profile' %}">Back</a></p>
+    </div>
+{% endblock content %}
