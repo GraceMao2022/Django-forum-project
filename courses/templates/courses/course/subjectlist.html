@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if subject %}
+    {{ subject.title }} topics
+  {% else %}
+    All topics
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>Subjects and Topics </h1>
+<div class="main_frame">
+  {% for s in subjects %}
+    <div class="course-info">
+      <h3>{{ s.title }} ({{ s.total_courses }} topics) </h3>
+      <div class="contents-module">
+          {% for course in courses %}
+              {% if course.subject == s %}
+                <p><a href="{% url "course_detail" course.slug %}"> {{ course.title }} </a></p>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

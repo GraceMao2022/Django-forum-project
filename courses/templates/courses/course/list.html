@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+  <!-- this contains the content of the main page, should be edited -->
+  <!-- i'm creating a "main" section, not sure if that's how it works because there wasn't one initially -->
+  <main>
+    <section id="landing-page">
+        <h1>Monta Vista Study Buddy Society (SBS)</h1>
+        <section class="header-down-arrow">
+            <a href="#about">
+                <img src="../../../static/img/downarrow.png" width="50">
+            </a>
+        </section>
+    </section> 
+    <section id="about">
+        <h1>About</h1>
+        <p>The Study Buddy Society (SBS) is a peer tutoring program where students help students achieve academic success.</p>
+        <p>This year, we are providing tutoring through three services: the SBS online forum, in-person tutoring，and virtual tutoring from the Interact club.</p>
+    </section>
+    <section id="online-info">
+        <h1>Online Forum</h1>
+        <p>The SBS Online Forum is a discussion forum where students can communicate with their peers. This is open to all students and is separate from the in-person SBS tutoring and the Interact club. Tutors registered in SBS will have their names shown in blue.</p>
+        <div style="margin:30px 0; display: flex; justify-content: space-around;">
+        <iframe width="700" height="394" src="https://www.youtube.com/embed/453o_oDNCZk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="700" height="394" src="https://www.youtube.com/embed/PQWGvuzuLAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section id="in-person-info">
+        <h1>In-Person Tutoring</h1>
+        <div id="tutoring-info" class="homediv">
+            <h2>Who is Study Buddies for?</h2>
+            <p>New this year, Study Buddy tutoring is open to all students, regardless of their grades. However, if not enough tutors are available, preference will be given to the following students:</p>
+                <ul>
+                    <li>Students who received a D, F or I in Math, Science and/or English
+                    </li>
+                    <li>Seniors who do not meet graduation requirements
+                    </li>
+                    <li>
+                        ELD or SPED student
+                    </li>
+                </ul>
+        </div>
+        <div id="time-info" class="homediv">
+            <h2>When does Study Buddies meet?</h2>
+            <p>
+                Study buddies are held in person in the library during the following hours:</p>
+                <ul>
+                    <li>
+                        Monday, Tuesday Thursday: 1:55 – 4:15 PM
+                    </li>
+                    <li>
+                        Wednesday: 1:50 – 4:15 PM
+                    </li>
+                </ul>
+        </div>
+        <div id="expectations" class="homediv">
+            <h2>Study Buddies Expectations</h2>
+                <ul>
+                    <li>Sessions are typically scheduled two times a week for 45 minutes per session.
+                    </li>
+                    <li>Students commit to an entire semester (not a drop-in program).
+                    </li>
+                    <li>Attendance will be logged, and students are expected to come prepared with appropriate materials.
+                    </li>
+                    <li>Illness is the only accepted reason for an excused absence. If a student is consistently absent or late, or arrives ill-prepared, they will be asked to leave the program.
+                    </li>
+                    <li>Most students concentrate on homework in subject areas where they are having difficulty. However, tutors can also help students prepare for the High School Exit Exam.</li>
+                </ul>
+        </div>
+        <div id="tutors" class="homediv">
+            <h2>Tutors</h2>
+            <p>Tutors are current MVHS students who offer their time and expertise to fellow students at no charge. Tutors must fill out an application and partake in a brief interview and orientation to be considered for the program. Tutors must show academic strength through grades. Tutors earn volunteer hours for their tutoring services.</p>
+            <button><a href="https://docs.google.com/forms/d/e/1FAIpQLSferXs0mlqDJVb3yDHXXgrYQ2eiek6hrCB-XJkzaFwQVozuEw/viewform">Sign-Up</a></button>
+        </div>
+        <div id="tutees" class="homediv">
+            <h2>Tutees</h2>
+            <p>All students, regardless of their grades, may request tutoring. However, availability of tutors may be limited for some courses.</p>
+            <button><a href="https://docs.google.com/forms/d/e/1FAIpQLSdbzgQe5TK5Q104C_KpRKI5E3g4CUaP1p7AuoWXVvDe7-_SoQ/viewform">Sign-Up</a></button>
+            <br>
+        </div>
+    </section>
+    <section id='interacttutors'>
+        <h1>Interact Tutors</h1>
+        <p>The Interact club is providing free one-on-one virtual tutoring from qualified middle and high school students. Check out their website!</p>
+        <button><a href="https://interacttutors.com/">Interact Tutors</a></button>
+    </section>
+    <section id='tutortimelog'>
+        <h1>Study Buddy Tutor Time Log</h1>
+        <p>Tutors, remember to log all hours you spend working for Study Buddy, in-person and online! Thank you for your hard work!</p>
+        <button><a href="https://docs.google.com/forms/d/e/1FAIpQLSdbFXS-QaEicopm05tm1_Anm1cQM8h0gDE8f7CMJLIs4sdtfg/viewform">SBS Time Log</a></button>
+    </section>
+    <section id="fuhsd-tech-agreement">
+        <h1>FUHSD Technology Usage Agreement</h1>
+        <p>By using the SBS Online Forum, you are agreeing to the FUHSD Technology Usage Agreement.</p>
+        <button><a href="https://drive.google.com/file/d/15IeOpiraRyICdCuaOhbGrJ4DhcPMpOaj/view?usp=sharing">FUHSD Technology Usage Agreement</a></button>
+    </section>
+    <section id="non-disc-statement">
+        <h1>Non-discrimination Statement</h1>
+        <p>The Study Buddy Society (SBS) is committed to equal opportunity for all individuals in education. The SBS program shall be free from discrimination based on gender, sex, race, color, religion, ancestry, national origin, ethnic group identification, marital or parental status, physical or mental disability, sexual orientation, lack of English skills, handicap or the perception of one or more of such characteristics. Reasonable accommodations are available for students with disabilities. The student and/or parent/guardian should contact the case manager (for a student in special education) or guidance counselor (for a student with a 504 plan) to request accommodations.</p>
+    </section>
+  </main>
+{% endblock %}
+

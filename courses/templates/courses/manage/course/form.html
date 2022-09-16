@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if object %}
+    Edit topic "{{ object.title }}"
+  {% else %}
+    Create a new topic
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <h1>
+    {% if object %}
+      Edit topic "{{ object.title }}"
+    {% else %}
+      Create a new topic
+    {% endif %}
+  </h1>
+  <div class="module">
+    <h2>Topic info</h2>
+    <form method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <p><input type="submit" value="Save topic"></p>
+    </form>
+  </div>
+{% endblock %}

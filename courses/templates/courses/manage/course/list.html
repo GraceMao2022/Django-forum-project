@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}My topics{% endblock %}
+
+{% block content %}
+  <h1>My Created Topics</h1>
+
+  <div class="module">
+    {% for course in object_list %}
+      <div class="course-info">
+        <h3>{{ course.title }}</h3>
+        <p>
+          <a href="{% url "course_edit" course.id %}">Edit</a>
+        </p>
+      </div>
+    {% empty %}
+      <p>You haven't created any topics yet.</p>
+    {% endfor %}
+    <p>
+      <a href="{% url "course_create" %}" class="button">Create new topic</a>
+    </p>
+  </div>
+{% endblock %}

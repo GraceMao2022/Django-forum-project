@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ object.title }}
+{% endblock %}
+
+{% block content %}
+  {% with subject=object.subject %}
+    <h1 style="font-size:25px;" class="title" >
+      {{ object.title }}
+    </h1>
+    <div class="module">
+      <h2>Overview</h2>
+      {{ object.overview|linebreaks }}
+      {% if request.user.is_authenticated %}
+        <form action="{% url "student_enroll_course" %}" method="post">
+          {{ enroll_form }}
+          {% csrf_token %}
+          {% if enrolled %}
+          <input type="submit" value="Go to QA Room">
+          {% else %}
+          <input type="submit" value="Add to my topics">
+          {% endif %}
+        </form>
+      {% else %}
+        <a href="{% url "signup" %}" class="button">
+          Create an account to access contents
+        </a>
+      {% endif %}
+    </div>
+  {% endwith %}
+{% endblock %}
