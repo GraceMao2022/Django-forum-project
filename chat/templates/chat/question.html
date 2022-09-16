@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load course %}
+
+{% block content %}
+<div style="margin: 0 auto;max-width: 1000px;">
+  <h1 style="font-size:25px;" class="title">
+    <a  style="font: inherit; color: inherit;" href="{% url "chat:course_qa_room" course.id %}">QA room for {{ course.title }}</a>
+  </h1>
+  <h2>Question Title: {{question.title}}</h2>
+  <p>Description: {{question.body|safe}}</p>
+  
+  <p style="font-size: smaller;"><span style="float: left">Posted by 
+  {% if question.masques %}
+    <em>MVHS asker</em>
+  {% else %}  
+    {% if request.user|has_group:"Tutor" %}
+      <em style="color: cornflowerblue;">{{ question.author}}</em>
+    {% else %}
+      <em>{{ question.author}}</em>
+    {% endif %}
+  {% endif %}
+  on <em>{{ question.created_at}}</em></span>
+  {% if request.user.id == question.author.id %}
+    <span style="float: right;"><a style="font: inherit;" href="{% url 'chat:updatenewquestion' course.id question.id %}">Edit</a></span>
+  {% endif %}
+  </p>
+  <br><br>
+  <hr style="border-color: lightgrey; background-color: lightgrey;">
+
+  <div >
+    <h2>Responses</h2>
+
+    {% if not question.responses.all %}
+      <hr style="height: 1px; border-width: 0; background-color: rgb(230, 230, 230);">
+      <p>No responses yet</p>
+    {% else %}
+      {% for response in question.get_responses %}
+        <hr style="height: 1px; border-width: 0; background-color: rgb(230, 230, 230);">
+        <p style="font-size: smaller;"><span style="float:left;"></span>
+          {% if response.masques %}
+            <em>MVHS responder</em>
+          {% else %}
+            {% if request.user|has_group:"Tutor" %}
+              <em style="color: cornflowerblue;">{{ response.user.username}}</em>
+            {% else %}
+              <em>{{ response.user.username}}</em>
+            {% endif %}
+          {% endif %}
+          posted on <em>{{ response.created_at }}</em> : </span>
+          {% if request.user.id == response.user.id %}
+            <span style="float: right;"><a style="font: inherit;" href="{% url 'chat:updatequestion' course.id question.id response.id %}">Edit</a></span>
+          {% endif %}
+        </p>
+
+        <p>{{ response.body|safe }}</p>
+
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <hr style="border-color: lightgrey; background-color: lightgrey;">
+
+  {% if user.is_authenticated %}
+  <form method="POST" action="" class="response-form" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="chat_form_row">
+    <label for="{{response_form.body.id_for_label}}">Your answer:</label>
+    <br>
+    {{response_form.media}}
+    {{response_form.body}}
+  </div>
+  <div class="chat_form_row">
+    {{response_form.masques}}
+    <label for="{{response_form.masques.id_for_label}}" style="clear: none;">Anonymous (shown as 'MVHS responder')</label>
+    <span class="error">{{response_form.masques.errors}}</span>
+  </div>
+  
+  <input type="submit" value="Send" class="submit-button"/>
+  </form>
+
+  {% endif %}
+
+</div>
+{% endblock %}
+
+
+{% block domready %}
+{% if response %}
+  $('html, body').animate({
+    scrollTop: ($('.response-form').first().offset().top)
+  }, 400);
+{% endif %}
+{% endblock %}

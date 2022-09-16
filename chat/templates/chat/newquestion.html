@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}New question {% endblock %}
+
+{% block content %}
+<div style="margin: 0 auto;width: 1000px;">
+<h1 style="font-size:25px;" class="title">New question for {{ course.title }}</h1>
+
+<br>
+<form method="POST" action="" class="newquestion-form" enctype="multipart/form-data">
+  {% csrf_token %}
+<div  class="chat_form_row">
+  <label for="{{form.title.id_for_label}}">Title:</label>
+  {{form.title}}
+  <span class="error">{{form.title.errors}}</span>
+</div>
+<div  class="chat_form_row">
+  <label for="{{form.body.id_for_label}}"  style="margin-top: 8px;">Body:</label>
+  <br>
+  {{form.media}}
+  {{form.body}}
+  <span class="error">{{form.body.errors}}</span>
+</div>
+<div  class="chat_form_row">
+  {{form.masques}}
+  <label for="{{form.masques.id_for_label}}" style="clear: none;">Anonymous (shown as 'MVHS responder')</label>
+  <span class="error">{{form.masques.errors}}</span>
+</div>
+
+
+<input type="submit" value="Submit" class="submit-button"/>
+
+</form>
+
+</div>
+
+
+{% endblock %}

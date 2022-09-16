@@ -1,0 +1,12 @@
+{% autoescape off %}
+Hi {{ question.author.username }},
+
+There is a new response to your question titled "{{question.title}}" in the "{{course}}" QA room.
+
+You can click on the link below to go to the question page:
+{{ scheme }}://{{ domain }}{% url 'chat:question' course.id question.id %}
+{% endautoescape %}
+If you have any questions, please email: mvhsforum@gmail.com
+
+Thank you,
+MVHS SBS Team

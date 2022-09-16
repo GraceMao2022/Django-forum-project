@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load course %}
+
+{% block title %}QA room for {{ course.title }}{% endblock %}
+
+{% block content %}
+  <h1 style="font-size:25px;" class="title" >QA Room for {{ course.title }}</h1>
+
+  <div id="qa_room">
+    <br>
+    <div style="display: flex; justify-content: space-between;">
+    <a href="{%url 'chat:newquestion' course.id %}">Add a New Question</a>
+
+    {% if request.user|has_group:"Tutor" %}
+    <form method="POST" action="">
+      {% csrf_token %}
+      Notify me when a new question is posted in this QA room
+      <span>{{form.email_notif}}</span>
+    </form>
+    {% endif %}
+    </div>
+    <br>
+
+    <table>
+      <tr>
+        <th width="20px">No.</th>
+        <th>Title</th>
+        <th width="200px">Posted by</th>
+        <th width="100px">Responses</th>
+      </tr>
+      {%for question in questions %}
+      <tr>
+        <td align="center">{{ forloop.counter }}</td>
+        <td><a href="{%url 'chat:question' course.id question.id %}">{{question.title}}</a></td>
+        <td>
+          <span style="font-size: smaller;">
+            {% if question.masques %}
+              <em>MVHS asker</em>
+            {% else %}           
+              <em>{{ question.author}}</em>
+            {% endif %}
+            <br> {{ question.created_at}}
+          </span>
+        </td>
+        <td align="center">{{ question.total_responses }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+  </div>
+
+{% endblock %}
